@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalAnalyticTool", "FinalAnalyticTool.csproj", "{AC914BD6-D33D-458C-AB72-1CDBB73D3A87}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalToolVisualizer", "..\FinalToolVisualizer\FinalToolVisualizer.csproj", "{39D3546A-E4AD-4E8C-BEDF-0EF851F75744}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC914BD6-D33D-458C-AB72-1CDBB73D3A87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC914BD6-D33D-458C-AB72-1CDBB73D3A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC914BD6-D33D-458C-AB72-1CDBB73D3A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC914BD6-D33D-458C-AB72-1CDBB73D3A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D3546A-E4AD-4E8C-BEDF-0EF851F75744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D3546A-E4AD-4E8C-BEDF-0EF851F75744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D3546A-E4AD-4E8C-BEDF-0EF851F75744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D3546A-E4AD-4E8C-BEDF-0EF851F75744}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0C352A9-C531-4D7D-A9C3-83BAC5752C43}
+	EndGlobalSection
+EndGlobal
