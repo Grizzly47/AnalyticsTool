@@ -28,87 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            importButton = new Button();
-            mergeButton = new Button();
-            exportButton = new Button();
-            gameList_GridView = new DataGridView();
-            removeGameButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)gameList_GridView).BeginInit();
-            SuspendLayout();
+            this.importButton = new System.Windows.Forms.Button();
+            this.mergeButton = new System.Windows.Forms.Button();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.gameList_GridView = new System.Windows.Forms.DataGridView();
+            this.removeGameButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.gameList_GridView)).BeginInit();
+            this.SuspendLayout();
             // 
             // importButton
             // 
-            importButton.Location = new Point(25, 15);
-            importButton.Name = "importButton";
-            importButton.Size = new Size(100, 25);
-            importButton.TabIndex = 0;
-            importButton.Text = "Import";
-            importButton.UseVisualStyleBackColor = true;
-            importButton.Click += importButton_Click;
+            this.importButton.Location = new System.Drawing.Point(25, 15);
+            this.importButton.Name = "importButton";
+            this.importButton.Size = new System.Drawing.Size(100, 25);
+            this.importButton.TabIndex = 0;
+            this.importButton.Text = "Import";
+            this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.ImportButton_Click);
             // 
             // mergeButton
             // 
-            mergeButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mergeButton.Location = new Point(175, 15);
-            mergeButton.Name = "mergeButton";
-            mergeButton.Size = new Size(116, 25);
-            mergeButton.TabIndex = 1;
-            mergeButton.Text = "Merge";
-            mergeButton.UseVisualStyleBackColor = true;
-            mergeButton.Click += mergeButton_Click;
+            this.mergeButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mergeButton.Location = new System.Drawing.Point(175, 15);
+            this.mergeButton.Name = "mergeButton";
+            this.mergeButton.Size = new System.Drawing.Size(116, 25);
+            this.mergeButton.TabIndex = 1;
+            this.mergeButton.Text = "Merge";
+            this.mergeButton.UseVisualStyleBackColor = true;
+            this.mergeButton.Click += new System.EventHandler(this.MergeButton_Click);
             // 
             // exportButton
             // 
-            exportButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            exportButton.Location = new Point(325, 15);
-            exportButton.Name = "exportButton";
-            exportButton.Size = new Size(116, 25);
-            exportButton.TabIndex = 2;
-            exportButton.Text = "Export";
-            exportButton.UseVisualStyleBackColor = true;
-            exportButton.Click += exportButton_Click;
+            this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportButton.Location = new System.Drawing.Point(325, 15);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(116, 25);
+            this.exportButton.TabIndex = 2;
+            this.exportButton.Text = "Export";
+            this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Click += new System.EventHandler(this.ExportButton_Click);
             // 
             // gameList_GridView
             // 
-            gameList_GridView.AllowUserToAddRows = false;
-            gameList_GridView.AllowUserToOrderColumns = true;
-            gameList_GridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            gameList_GridView.Location = new Point(25, 50);
-            gameList_GridView.MultiSelect = false;
-            gameList_GridView.Name = "gameList_GridView";
-            gameList_GridView.ReadOnly = true;
-            gameList_GridView.RowTemplate.Height = 25;
-            gameList_GridView.Size = new Size(416, 380);
-            gameList_GridView.TabIndex = 5;
-            gameList_GridView.CellContentClick += gameList_GridView_CellContentClick;
-            gameList_GridView.MouseDoubleClick += gameList_GridView_MouseDoubleClick;
+            this.gameList_GridView.AllowUserToAddRows = false;
+            this.gameList_GridView.AllowUserToOrderColumns = true;
+            this.gameList_GridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gameList_GridView.Location = new System.Drawing.Point(25, 50);
+            this.gameList_GridView.MultiSelect = false;
+            this.gameList_GridView.Name = "gameList_GridView";
+            this.gameList_GridView.ReadOnly = true;
+            this.gameList_GridView.RowTemplate.Height = 25;
+            this.gameList_GridView.Size = new System.Drawing.Size(416, 380);
+            this.gameList_GridView.TabIndex = 5;
+            this.gameList_GridView.DoubleClick += new System.EventHandler(this.GameList_GridView_MouseDoubleClick);
             // 
             // removeGameButton
             // 
-            removeGameButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            removeGameButton.Location = new Point(25, 449);
-            removeGameButton.Name = "removeGameButton";
-            removeGameButton.Size = new Size(116, 25);
-            removeGameButton.TabIndex = 7;
-            removeGameButton.Text = "Remove Game";
-            removeGameButton.UseVisualStyleBackColor = true;
-            removeGameButton.Click += removeGameButton_Click;
+            this.removeGameButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.removeGameButton.Location = new System.Drawing.Point(25, 449);
+            this.removeGameButton.Name = "removeGameButton";
+            this.removeGameButton.Size = new System.Drawing.Size(116, 25);
+            this.removeGameButton.TabIndex = 7;
+            this.removeGameButton.Text = "Remove Game";
+            this.removeGameButton.UseVisualStyleBackColor = true;
             // 
             // AnalyticMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(459, 486);
-            Controls.Add(removeGameButton);
-            Controls.Add(gameList_GridView);
-            Controls.Add(exportButton);
-            Controls.Add(mergeButton);
-            Controls.Add(importButton);
-            Margin = new Padding(2, 6, 2, 6);
-            Name = "AnalyticMain";
-            Text = "Analytic: Main";
-            ((System.ComponentModel.ISupportInitialize)gameList_GridView).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(459, 486);
+            this.Controls.Add(this.removeGameButton);
+            this.Controls.Add(this.gameList_GridView);
+            this.Controls.Add(this.exportButton);
+            this.Controls.Add(this.mergeButton);
+            this.Controls.Add(this.importButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
+            this.Name = "AnalyticMain";
+            this.Text = "Analytic: Main";
+            ((System.ComponentModel.ISupportInitialize)(this.gameList_GridView)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

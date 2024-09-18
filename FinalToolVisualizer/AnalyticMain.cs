@@ -16,7 +16,7 @@ namespace FinalToolVisualizer
             InitializeComponent();
         }
 
-        private void importButton_Click(object sender, EventArgs e)
+        private void ImportButton_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -31,13 +31,14 @@ namespace FinalToolVisualizer
 
                     overallData = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, GameElement>>>(fileContent);
 
+                    // Update gameList_GridView
                     gameList_GridView.Rows.Clear();
                     gameList_GridView.Columns.Clear();
                     gameList_GridView.Columns.Add("SessionName", "Session Name");
 
                     foreach (var session in overallData)
                     {
-                        // Add session name (the key) to the DataGridView
+                        // Add ONLY sessions names to the grid
                         gameList_GridView.Rows.Add(session.Key);
                     }
 
@@ -46,7 +47,7 @@ namespace FinalToolVisualizer
             }
         }
 
-        private void mergeButton_Click(object sender, EventArgs e)
+        private void MergeButton_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -62,18 +63,17 @@ namespace FinalToolVisualizer
 
                     if (tempData != null)
                     {
-                        // Merge the tempData into the overallData dictionary
+                        // Merge temp data into overallData
                         foreach (var session in tempData)
                         {
-                            // If the session already exists, merge its players
+                            // If session exists (for some reason), update it
                             if (overallData.ContainsKey(session.Key))
                             {
                                 foreach (var player in session.Value)
                                 {
-                                    // If the player exists, update their metrics; otherwise, add them
+                                    // If the player exists (for some reason), add/update new metrics
                                     if (overallData[session.Key].ContainsKey(player.Key))
                                     {
-                                        // Merge the metrics for existing players
                                         foreach (var metric in player.Value.Metrics)
                                         {
                                             overallData[session.Key][player.Key].AddOrUpdateMetric(metric.Key, metric.Value);
@@ -93,14 +93,14 @@ namespace FinalToolVisualizer
                             }
                         }
 
-                        // Update the main session list to reflect merged sessions
+                        // Update gameList_GridView
                         gameList_GridView.Rows.Clear();
                         gameList_GridView.Columns.Clear();
                         gameList_GridView.Columns.Add("SessionName", "Session Name");
 
                         foreach (var session in overallData)
                         {
-                            // Add session name (the key) to the DataGridView
+                            // Add ONLY sessions names to the grid
                             gameList_GridView.Rows.Add(session.Key);
                         }
 
@@ -114,50 +114,48 @@ namespace FinalToolVisualizer
             }
         }
 
-        private void exportButton_Click(object sender, EventArgs e)
+        private void ExportButton_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
                 saveFileDialog.Title = "Save JSON File";
-                saveFileDialog.FileName = "GameData.json"; // Default file name
+                saveFileDialog.FileName = "gameData.json"; // Default file name (redo? Scrap?)
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string saveFilePath = saveFileDialog.FileName;
 
-                    // Serialize the existing overallData to JSON
                     if (overallData != null && overallData.Count > 0)
                     {
-                        // Prepare data for export
                         var exportData = new Dictionary<string, Dictionary<string, object>>();
 
                         foreach (var session in overallData)
                         {
-                            string sessionKey = session.Key; // The session name
-                            var sessionData = session.Value; // The inner dictionary of players
+                            string sessionKey = session.Key; // Session Name
+                            var sessionData = session.Value; // Inner information
 
-                            // Create a dictionary to hold all player data for this session
+                            // Create second dictionary to hold elements
                             var sessionExportData = new Dictionary<string, object>();
 
-                            foreach (var player in sessionData)
+                            foreach (var element in sessionData)
                             {
-                                string playerName = player.Key; // Player's name
-                                GameElement playerData = player.Value; // Player's GameElement data
+                                string elementName = element.Key; // Element Name
+                                GameElement elementData = element.Value; // All information within the element
 
-                                // Create a dictionary for the player's metrics
+                                // Create a dictionary for the element's metrics
                                 var metricsData = new Dictionary<string, float>();
 
                                 // Loop through metrics in GameElement
-                                foreach (var metric in playerData.Metrics)
+                                foreach (var metric in elementData.Metrics)
                                 {
                                     metricsData[metric.Key] = metric.Value;
                                 }
 
-                                // Add player data to the session export structure
-                                sessionExportData[playerName] = new Dictionary<string, object>
+                                // Add element data to the session export structure
+                                sessionExportData[elementName] = new Dictionary<string, object>
                         {
-                            { "Name", playerName },
+                            { "Name", elementName },
                             { "Metrics", metricsData }
                         };
                             }
@@ -180,51 +178,13 @@ namespace FinalToolVisualizer
             }
         }
 
-
-        private void sortByContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void gameID_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numPlayer_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gameList_GridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void gameList_GridView_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (gameList_GridView.SelectedRows.Count > 0)
-            {
-                // Get the session name from the selected row
-                string selectedSessionKey = gameList_GridView.SelectedRows[0].Cells["SessionName"].Value.ToString();
-
-                // Open the AnalyticsGameDetails form with the selected session details
-                OpenGameDetails(selectedSessionKey);
-            }
-            else
-            {
-                MessageBox.Show("Please select a session to view.");
-            }
-        }
-
         private void OpenGameDetails(string sessionKey)
         {
-            // Assume that overallData is the dictionary with all the session data
+            // overallData contains the data of the imported .JSON
             if (overallData.ContainsKey(sessionKey))
             {
                 var sessionData = overallData[sessionKey];
 
-                // Open the AnalyticsGameDetails form and pass the session data
                 AnalyticsGameDetails detailsForm = new AnalyticsGameDetails(sessionKey, sessionData);
                 detailsForm.Show();  // Show the details form
             }
@@ -234,14 +194,26 @@ namespace FinalToolVisualizer
             }
         }
 
-        private void viewGameButton_Click(object sender, EventArgs e)
+        private void GameList_GridView_MouseDoubleClick(object sender, EventArgs e)
         {
-
-        }
-
-        private void removeGameButton_Click(object sender, EventArgs e)
-        {
-
+            if (gameList_GridView.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    // Attempt to get the session key from the selected row
+                    string selectedSessionKey = gameList_GridView.SelectedRows[0].Cells["SessionName"].Value?.ToString();
+                    OpenGameDetails(selectedSessionKey);
+                }
+                catch (Exception ex)
+                {
+                    // Handle unexpected errors
+                    MessageBox.Show("An error occurred while selecting the session. Please try again.\nError: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a session to view.");
+            }
         }
     }
 }

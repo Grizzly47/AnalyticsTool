@@ -28,57 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            searchBar_TextBox = new TextBox();
-            label2 = new Label();
-            gameDetails_DataGrid = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)gameDetails_DataGrid).BeginInit();
-            SuspendLayout();
+            this.searchBar_TextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.gameDetails_DataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.gameDetails_DataGrid)).BeginInit();
+            this.SuspendLayout();
             // 
             // searchBar_TextBox
             // 
-            searchBar_TextBox.Location = new Point(118, 18);
-            searchBar_TextBox.Name = "searchBar_TextBox";
-            searchBar_TextBox.Size = new Size(207, 23);
-            searchBar_TextBox.TabIndex = 4;
-            searchBar_TextBox.TextChanged += searchBar_TextBox_TextChanged;
+            this.searchBar_TextBox.Location = new System.Drawing.Point(118, 18);
+            this.searchBar_TextBox.Name = "searchBar_TextBox";
+            this.searchBar_TextBox.Size = new System.Drawing.Size(207, 23);
+            this.searchBar_TextBox.TabIndex = 4;
+            this.searchBar_TextBox.TextChanged += new System.EventHandler(this.searchBar_TextBox_TextChanged);
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(25, 21);
-            label2.Name = "label2";
-            label2.Size = new Size(87, 15);
-            label2.TabIndex = 5;
-            label2.Text = "Filter By Name:";
-            label2.Click += label2_Click;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Filter By Name:";
             // 
             // gameDetails_DataGrid
             // 
-            gameDetails_DataGrid.AllowUserToAddRows = false;
-            gameDetails_DataGrid.AllowUserToOrderColumns = true;
-            gameDetails_DataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            gameDetails_DataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gameDetails_DataGrid.Location = new Point(25, 55);
-            gameDetails_DataGrid.MultiSelect = false;
-            gameDetails_DataGrid.Name = "gameDetails_DataGrid";
-            gameDetails_DataGrid.ReadOnly = true;
-            gameDetails_DataGrid.RowTemplate.Height = 25;
-            gameDetails_DataGrid.Size = new Size(410, 407);
-            gameDetails_DataGrid.TabIndex = 6;
+            this.gameDetails_DataGrid.AllowUserToAddRows = false;
+            this.gameDetails_DataGrid.AllowUserToOrderColumns = true;
+            this.gameDetails_DataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gameDetails_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gameDetails_DataGrid.Location = new System.Drawing.Point(25, 55);
+            this.gameDetails_DataGrid.MultiSelect = false;
+            this.gameDetails_DataGrid.Name = "gameDetails_DataGrid";
+            this.gameDetails_DataGrid.ReadOnly = true;
+            this.gameDetails_DataGrid.RowTemplate.Height = 25;
+            this.gameDetails_DataGrid.Size = new System.Drawing.Size(410, 407);
+            this.gameDetails_DataGrid.TabIndex = 6;
+            this.gameDetails_DataGrid.DoubleClick += new System.EventHandler(this.gameList_GridView_MouseDoubleClick);
             // 
             // AnalyticsGameDetails
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(459, 486);
-            Controls.Add(gameDetails_DataGrid);
-            Controls.Add(label2);
-            Controls.Add(searchBar_TextBox);
-            Name = "AnalyticsGameDetails";
-            Text = "AnalyticsGameDetails";
-            ((System.ComponentModel.ISupportInitialize)gameDetails_DataGrid).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(459, 486);
+            this.Controls.Add(this.gameDetails_DataGrid);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.searchBar_TextBox);
+            this.Name = "AnalyticsGameDetails";
+            this.Text = "AnalyticsGameDetails";
+            ((System.ComponentModel.ISupportInitialize)(this.gameDetails_DataGrid)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

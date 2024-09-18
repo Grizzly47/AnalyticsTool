@@ -27,57 +27,55 @@ namespace FinalToolVisualizer
             // Set the form's title to display the session name
             this.Text = $"Analytics: {_sessionKey}";
 
-            // Load the session details into the gameDetails_DataGrid
+            // Load the session details
             LoadSessionDetails();
         }
 
         private void LoadSessionDetails()
         {
-            // Clear existing data in the gameDetails_DataGrid
+            // Clear the grid
             gameDetails_DataGrid.Rows.Clear();
             gameDetails_DataGrid.Columns.Clear();
 
-            // Add the first column for player names
+            // Add element name to first column
             gameDetails_DataGrid.Columns.Add("Name", "Name");
 
-            // Collect all unique metric categories from all players
+            // Collect all overall metrics
             HashSet<string> allCategories = new HashSet<string>();
 
-            // Iterate through all players to gather unique metric keys
-            foreach (var player in sessionData)
+            // Iterate through all elements
+            foreach (var element in sessionData)
             {
-                // player.Value is a GameElement, so access the Metrics dictionary
-                GameElement playerData = player.Value;
+                // element.Value is a GameElement
+                // Allowing access to the metrics
+                GameElement elementData = element.Value;
 
-                // Add each unique metric key to the set
-                foreach (var metric in playerData.Metrics.Keys)
+                // Add each metric to the hash
+                foreach (var metric in elementData.Metrics.Keys)
                 {
                     allCategories.Add(metric);
                 }
             }
 
-            // Now add each unique metric as a column
+            // Add to data grid
             foreach (var category in allCategories)
             {
                 gameDetails_DataGrid.Columns.Add(category, category);
             }
 
-            // Loop through each player and add their name and metrics to the gameDetails_DataGrid
-            foreach (var player in sessionData)
+            foreach (var element in sessionData)
             {
-                GameElement playerData = player.Value;
-                string playerName = playerData.Name; // Get player name from GameElement
+                GameElement elementData = element.Value;
+                string elementName = elementData.Name; // Get element Name
 
-                // Get the player's metrics from GameElement's Metrics dictionary
-                var metrics = playerData.Metrics;
+                // Get all metrics
+                var metrics = elementData.Metrics;
 
-                // Create a new row starting with the player's name
-                var row = new List<string> { playerName };
+                var row = new List<string> { elementName };
 
-                // Add each metric value to the row, checking against the full set of categories
+                // Check element for each category
                 foreach (var category in allCategories)
                 {
-                    // If the player has the metric, add it; otherwise, add "N/A"
                     if (metrics.ContainsKey(category))
                     {
                         row.Add(metrics[category].ToString());
@@ -88,23 +86,12 @@ namespace FinalToolVisualizer
                     }
                 }
 
-                // Add the row to the gameDetails_DataGrid
+                // Add row to grid
                 gameDetails_DataGrid.Rows.Add(row.ToArray());
             }
         }
 
-
-        private void sortBy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
+        private void gameList_GridView_MouseDoubleClick(object sender, EventArgs e)
         {
 
         }
